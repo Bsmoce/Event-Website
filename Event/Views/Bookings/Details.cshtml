@@ -1,0 +1,51 @@
+﻿@model Event.Models.Booking
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Booking</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Event_Rez.Event_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Event_Rez.Event_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ticket.Ticket_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ticket.Ticket_ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Start_dates)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Start_dates)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.End_dates)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.End_dates)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Booking_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

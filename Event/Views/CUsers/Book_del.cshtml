@@ -1,0 +1,25 @@
+﻿@using Event.Models
+@{
+    ViewBag.Title = "Book_del";
+    Layout = "~/Views/Shared/_layout.cshtml";
+}
+<h2>Delete Booking</h2>
+<div class="row">
+    <div class="col-md-12">
+        <div class="block">
+            <div class="block-heading">
+                <div class="block-content-outer">
+                    <div class="block-content-inner">
+                        <form action="/CUsers/Book_del/" method="post">
+                            <input type="hidden" name="Ticket_ID" value="@Model.Ticket_ID" />
+                            <label>@Model.Ticket_ID Do you want to remove it?</label>
+                            <input type="submit" class="btn btn-danger" name="Ticket_ID" value="Evet">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

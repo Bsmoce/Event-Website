@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_layout.cshtml";
+}
+@using Event.Models
+
+<h2>Users Table</h2>
+
+<table class="table table-hover" tid="tbList">
+    <thead>
+        <tr>
+            <th class="head" scope="col">User Name</th>
+            <th class="head" scope="col">Show Event</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (User item in Model)
+        {
+        <tr class="name">
+            <td>@item.Users_Name</td>
+            <td>
+                @Ajax.ActionLink("Show Events", "List_User", "CUsers", new { id = item.Users_ID },
+               new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "tbUser" }, new { @class = "btn btn-primary" })
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+<div id="tbUser"> </div>
+
+

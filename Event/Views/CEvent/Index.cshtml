@@ -1,0 +1,40 @@
+﻿@using Event.Models
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_layout.cshtml";
+}
+<h2>Events Schedule</h2>
+@Html.ActionLink("Add Event", "Add", null, new { @class = "btn btn-outline-success" })
+<h3></h3>
+
+<table class="schdule-table table table-bordered" id="tbEvent">
+    <thead class="thead-light">
+        <tr>
+            <th class="head" scope="col">Event Name</th>
+            <th class="head" scope="col">Venue Name</th>
+            <th class="head" scope="col">City</th>
+            <th class="head" scope="col">Capacity</th>
+            <th class="head" scope="col">Categoey</th>
+            <th class="head" scope="col">Update</th>
+            <th class="head" scope="col">Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Event_Rez item in Model)
+        {
+            <tr class="name">
+                <td>@item.Event_Name</td>
+                <td>@item.Venue.Venue_Name</td>
+                <td>@item.Venue.Venue_City</td>
+                <td>@item.Venue.Venue_Capacity</td>
+                <td>@item.Category.Cat_Name</td>
+                <td><a href="/CEvent/Update/@item.Event_ID" class="btn btn-outline-primary">Update Event</a></td>
+                <td><a class="btn btn-outline-danger EventDel" data-id="@item.Event_ID">Delete Event</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@*@Html.ActionLink("Update Event", "Update", new { id = @item.Event_ID })*@
+@*<td><a href="/CEvent/Event_del/@item.Event_ID" class="btn btn-danger rounded EventDel">Delete Event</a></td>*@

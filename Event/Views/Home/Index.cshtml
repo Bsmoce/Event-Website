@@ -1,0 +1,68 @@
+﻿@using Event.Models
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_layout.cshtml";
+}
+<h1>   </h1>
+<div class="container">
+    @foreach (Booking item in Model)
+    {
+        <div class="card-deck mb-3 text-center">
+            <div class="card mb-4 shadow-sm">
+                <div class="card-header">
+                    <h4 class="my-0 font-weight-normal">@item.Event_Rez.Venue.Venue_City</h4>
+                </div>
+                <div class="card-body">
+                    <h1 class="card-title pricing-card-title">@item.Event_Rez.Event_Name<small class="text-muted"> Event</small></h1>
+                    <ul class="list-unstyled mt-3 mb-4">
+                        <li>Category: @item.Event_Rez.Category.Cat_Name</li>
+                        <li>Venue Name: @item.Event_Rez.Venue.Venue_Name</li>
+                        <li>Venue Location: @item.Event_Rez.Venue.Venue_Location</li>
+                        <li>Venue Capacity: @item.Event_Rez.Venue.Venue_Capacity</li>
+                        <li>Start Date: @item.Start_dates</li>
+                        <li>End Date: @item.End_dates</li>
+                    </ul>
+                    <a type="button" href="/Tickets/Index/@item.Event_ID" class="btn btn-lg btn-block btn-outline-primary">Buy Ticket</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+<footer class="pt-4 my-md-5 pt-md-5 border-top">
+    <div class="row">
+        <div class="col-12 col-md">
+            <img class="mb-2" src="/docs/4.5/assets/brand/bootstrap-solid.svg" alt="" width="24" height="24">
+            <small class="d-block mb-3 text-muted">© 2017-2020</small>
+        </div>
+        <div class="col-6 col-md">
+            <h5>Features</h5>
+            <ul class="list-unstyled text-small">
+                <li><a class="text-muted" href="#">Cool stuff</a></li>
+                <li><a class="text-muted" href="#">Random feature</a></li>
+                <li><a class="text-muted" href="#">Team feature</a></li>
+                <li><a class="text-muted" href="#">Stuff for developers</a></li>
+                <li><a class="text-muted" href="#">Another one</a></li>
+                <li><a class="text-muted" href="#">Last time</a></li>
+            </ul>
+        </div>
+        <div class="col-6 col-md">
+            <h5>Resources</h5>
+            <ul class="list-unstyled text-small">
+                <li><a class="text-muted" href="#">Resource</a></li>
+                <li><a class="text-muted" href="#">Resource name</a></li>
+                <li><a class="text-muted" href="#">Another resource</a></li>
+                <li><a class="text-muted" href="#">Final resource</a></li>
+            </ul>
+        </div>
+        <div class="col-6 col-md">
+            <h5>About</h5>
+            <ul class="list-unstyled text-small">
+                <li><a class="text-muted" href="#">Team</a></li>
+                <li><a class="text-muted" href="#">Locations</a></li>
+                <li><a class="text-muted" href="#">Privacy</a></li>
+                <li><a class="text-muted" href="#">Terms</a></li>
+            </ul>
+        </div>
+    </div>
+</footer>
+

@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "My_pro";
+    Layout = "~/Views/Shared/_layout.cshtml";
+}
+@using Event.Models
+@model Rating
+<h2>My ProFile</h2>
+
+<table class="schdule-table table table-bordered" id="tbEvent">
+    <thead class="thead-light">
+        <tr>
+            <th class="head" scope="col">User Name</th>
+            <th class="head" scope="col">Event Name</th>
+            <th class="head" scope="col">Rate</th>
+            <th class="head" scope="col">PDf</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        <tr class="name">
+            <td>@Html.DisplayTextFor(m => m.Login.User_names)</td>
+            <td>@Html.DisplayTextFor(m => m.Event_Rez.Event_Name)</td>
+            <td><a href="/CEvent/Update/" class="btn btn-outline-primary">Rate Event</a></td>
+            <td><a class="btn btn-outline-danger EventDel" data-id="">Download PDF</a></td>
+        </tr>
+    </tbody>
+</table>

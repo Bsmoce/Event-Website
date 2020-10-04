@@ -1,0 +1,137 @@
+﻿
+@using Event.Models
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_layout.cshtml";
+}
+
+@model Event_Rez
+
+<h2>Tickets</h2>
+
+<div class="px-4 px-lg-0">
+    <div class="pb-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 p-5 bg-white rounded shadow-sm mb-5">
+
+                    <!-- Shopping cart table -->
+                    <form action="/Tickets/index" method="post" role="form">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col" class="border-0 bg-light">
+                                            <div class="p-2 px-3 text-uppercase">Event</div>
+                                        </th>
+                                        <th scope="col" class="border-0 bg-light">
+                                            <div class="py-2 text-uppercase">Price</div>
+                                        </th>
+                                        <th scope="col" class="border-0 bg-light">
+                                            <div class="py-2 text-uppercase">Remove</div>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @using (Html.BeginForm("Index", "Tickets", FormMethod.Post))
+                                    {
+                                    <tr>
+                                        <th scope="row" class="border-0">
+                                            <div class="p-2">
+                                                <img src="" alt="" width="70" class="img-fluid rounded shadow-sm">
+                                                <div class="ml-3 d-inline-block align-middle">
+                                                    <h5 class="mb-0"><a href="#" class="text-dark d-inline-block align-middle product"></a>@Html.DisplayTextFor(m => m.Event_Name)</h5>
+                                                    <span class="text-muted font-weight-normal font-italic d-block">Category: @Html.DisplayTextFor(m => m.Category.Cat_Name)</span>
+                                                </div>
+                                            </div>
+                                        </th>
+                                        <td class="border-0 align-middle product-line-price"><strong>$ @Html.DisplayTextFor(m => m.price)</strong></td>
+                                        <td class="align-middle">
+                                            <a href="#" class="btn btn-link product-removal button">Remove</a>
+                                        </td>
+                                    </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </form>
+                    <!-- End -->
+                </div>
+            </div>
+
+            <div class="row py-5 p-4 bg-white rounded shadow-sm">
+                <div class="col-lg-6">
+                    <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Order summary </div>
+                    <div class="p-4">
+                        <p class="font-italic mb-4">Shipping and additional costs are calculated based on values you have entered.</p>
+                        <ul class="list-unstyled mb-4">
+                            <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted totals-value" id="cart-subtotal">Order Subtotal </strong><strong>$ @Html.DisplayTextFor(m => m.price)</strong></li>
+                            @*<li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted totals-value" id="cart-tax">Tax (5%)</strong><strong>$</strong></li>*@
+                            <li class="d-flex justify-content-between py-3 border-bottom">
+                                <strong class="text-muted totals-value">Total</strong>
+                                <h5 class="font-weight-bold">$ @Html.DisplayTextFor(m => m.price)</h5>
+                            </li>
+                        </ul>
+                        <a href="/Tickets/CreateDocument/" value="Create Document" class="btn btn-dark rounded-pill py-2 btn-block checkout">Procceed to checkout</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script>
+    var taxRate = 0.05;
+    var fadeTime = 300;
+
+    $(".product-removal button").click(function () {
+        removeItem(this);
+    });
+
+    function recalculateCart() {
+        var subtotal = 0;
+
+        $(".product").each(function () {
+            subtotal += parseFloat($(this).children(".product-line-price").text());
+        });
+
+
+        var tax = subtotal * taxRate;
+        var total = subtotal + tax;
+
+        /* Update totals display */
+        $(".totals-value").fadeOut(fadeTime, function () {
+            $("#cart-subtotal").html(subtotal.toFixed(2));
+            $("#cart-tax").html(tax.toFixed(2));
+            $("#cart-total").html(total.toFixed(2));
+            if (total == 0) {
+                $(".checkout").fadeOut(fadeTime);
+            } else {
+                $(".checkout").fadeIn(fadeTime);
+            }
+            $(".totals-value").fadeIn(fadeTime);
+        });
+    }
+
+
+    /* Update line price display and recalc cart totals */
+    productRow.children(".product-line-price").each(function () {
+        $(this).fadeOut(fadeTime, function () {
+            $(this).text(linePrice.toFixed(2));
+            recalculateCart();
+            $(this).fadeIn(fadeTime);
+        });
+    });
+}
+
+    /* Remove item from cart */
+    function removeItem(removeButton) {
+        /* Remove row from DOM and recalc cart total */
+        var productRow = $(removeButton).parent().parent();
+        productRow.slideUp(fadeTime, function () {
+            productRow.remove();
+            recalculateCart();
+        });
+    }
+
+</script>

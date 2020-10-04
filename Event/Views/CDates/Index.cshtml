@@ -1,0 +1,32 @@
+﻿@using Event.Models
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_layout.cshtml";
+}
+<h2>Events Schedule</h2>
+
+<table class="schdule-table table table-bordered" id="tbEvent">
+    <thead class="thead-light">
+        <tr>
+            <th class="head" scope="col">Event Name</th>
+            <th class="head" scope="col">Category Name</th>
+            <th class="head" scope="col">Start Date</th>
+            <th class="head" scope="col">End Date</th>
+            <th class="head" scope="col">Venue Capacity</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Booking item in Model)
+        {
+        <tr class="name">
+            <td>@item.Event_Rez.Event_Name</td>
+            <td>@item.Event_Rez.Category.Cat_Name</td>
+            <td>@item.Start_dates</td>
+            <td>@item.End_dates</td>
+            <td>@item.Event_Rez.Venue.Venue_Capacity</td>
+        </tr>
+        }
+    </tbody>
+</table>
+

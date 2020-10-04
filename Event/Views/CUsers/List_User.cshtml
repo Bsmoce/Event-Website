@@ -1,0 +1,27 @@
+﻿@using Event.Models
+
+<h1>Show Events</h1>
+<table class="table table-hover" id="tbUser">
+    <thead>
+        <tr>
+            <th class="head" scope="col">User Name</th>
+            <th class="head" scope="col">Event</th>
+            <th class="head" scope="col">Ticket ID</th>
+            <th class="head" scope="col">Remove The Booking</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Ticket item in Model)
+        {
+            if (item.Event_ID == item.Event_Rez.Event_ID)
+            {
+                <tr class="name">
+                    <td>@item.User.Users_Name</td>
+                    <td>@item.Event_Rez.Event_Name</td>
+                    <td>@item.Ticket_ID</td>
+                    <td><a class="btn btn-outline-danger BookDel" data-id="@item.Ticket_ID">Delete Booking</a></td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

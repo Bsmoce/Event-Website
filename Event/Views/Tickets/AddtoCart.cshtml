@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "AddtoCart";
+    Layout = "~/Views/Shared/_layout.cshtml";
+}
+
+<h2>AddtoCart</h2>
+
+@{Html.BeginForm("CreateDocument", "Tickets", FormMethod.Get);
+    {
+        <div>
+            <input type="submit" value="Create Document" style="width:150px;height:27px" />
+        </div>
+        }
+        Html.EndForm();
+    }
+

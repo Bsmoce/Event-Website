@@ -1,0 +1,104 @@
+﻿@using Event.Models
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+
+<html>
+<head>
+    <title>Login Page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="~/Content2/images/icons/favicon.ico">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content2/vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content2/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content2/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content2/vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content2/vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content2/vendor/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content2/vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content2/vendor/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content2/css/util.css">
+    <link rel="stylesheet" type="text/css" href="~/Content2/css/main.css">
+    <!--===============================================================================================-->
+</head>
+<body>
+
+
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100 p-b-160 p-t-50">
+                <form class="login100-form validate-form" action="/SignUp/Add_Account" method="post" role="form" onsubmit="return checkForm(this);">
+                    <span class="login100-form-title p-b-43">
+                        Sign Up
+                    </span>
+                    <div class="form-content">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" size="100" class="form-control" id="username" placeholder="Your Name" name="User_names" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="Teste" />
+                                    <select class="form-control" name="User_Role">
+                                        @foreach (Login item in ViewBag.Logins)
+                                        {
+                                            <option value="@item.User_Role">@item.User_Role</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="password" class="form-control" placeholder="Your Password" id="pwd1" name="User_Password" />
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control" id="pwd2" placeholder="Confirm Password" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container-login100-form-btn">
+                        <button class="login100-form-btn" type="submit">
+                            Submit
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/Scripts/bootbox.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Scripts/Signup.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Content2/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Content2/vendor/animsition/js/animsition.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Content2/vendor/bootstrap/js/popper.js"></script>
+    <script src="~/Content2/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Content2/vendor/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Content2/vendor/daterangepicker/moment.min.js"></script>
+    <script src="~/Content2/vendor/daterangepicker/daterangepicker.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Content2/vendor/countdowntime/countdowntime.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Content2/js/main.js"></script>
+
+
+</body>
+</html>
+
